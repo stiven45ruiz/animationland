@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animationland</title>
+
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            width: auto;
+            display: grid;
+            place-items: center;
+            counter-reset: game;
+        }
+        
+        .title{
+            text-align: center;
+            color: rgb(53, 53, 53);
+        }
+        .total-count{
+            text-align: center;
+            color: rgb(53, 53, 53);
+        }
+        .phone{
+            position: relative;
+            border: 5px solid black;
+            border-radius: 30px;
+            height: 600px;
+            width: 300px;
+            background: #ccefff;
+            box-shadow: 0 19px 30px rgb(0, 0, 0, 0.4), 0 15px 12px rgb(0, 0, 0, 0.22);
+        }
+        .layer-1{
+            position: absolute;
+            z-index: 1;
+            height: 450px;
+            width: 80px;
+            background: rgb(250, 185, 185, 0);
+            bottom: 0;
+            right: 60px;
+
+            animation-name: layer;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        
+        input[type=checkbox]{
+            appearance: none;
+            cursor: pointer;
+            height: 50px;
+            margin: 0;
+            position: relative;
+            top: 0;
+            width: 80px;
+            z-index: 2;
+        } 
+        input[type=checkbox]:focus{
+            appearance: none;
+            outline: none;
+        }
+        input:checked{
+            counter-increment: game;
+        }
+        .total-count::after{
+            content: counter(game);
+        }
+        .layer-2{
+            position: absolute;
+            z-index: 2;
+            height: 450px;
+            width: 80px;
+            background: rgba(0, 0, 0, 0);
+            bottom: 0;
+            left: 60px;
+
+            animation-name: layer;
+            animation-duration: 1s;
+            animation-timing-function: ease-in;
+            animation-iteration-count: infinite;
+        }
+        .layer-3{
+            position: absolute;
+            z-index: 3;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 220px;
+            height: 400px ;
+            background: sandybrown;
+            bottom: 0;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 19px 30px rgb(0, 0, 0, 0.4);
+        }
+        .layer-4{
+            position: absolute;
+            z-index: 4;
+            height: 350px;
+            width: 80px;
+            background: rgb(0, 0, 0, 0);
+            bottom: 0;
+            left: 30px;
+
+
+            animation-name: layer;
+            animation-duration: 1s;
+            animation-timing-function: cubic-bezier(.95,.01,.35,.58);
+            animation-iteration-count: infinite;
+        }
+        .layer-5{
+            position: absolute;
+            z-index: 5;
+            left: 0;
+            width: 220px;
+            height: 270px ;
+            background: sandybrown;
+            bottom: 30px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 19px 30px rgb(0, 0, 0, 0.4);
+        }
+        .layer-6{
+            position: absolute;
+            z-index: 6;
+            height: 250px;
+            width: 80px;
+            background: rgba(0, 0, 0, 0);
+            bottom: 0;
+            right: 35px;
+
+
+            animation-name: layer;
+            animation-duration: 1s;
+            animation-timing-function: cubic-bezier(1,.01,0,1.03);
+            animation-iteration-count: infinite;
+        }
+        .layer-7{
+            position: absolute;
+            z-index: 7;
+            right: 0;
+            width: 170px;
+            height: 170px ;
+            background: sandybrown;
+            bottom: 30px;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 19px 30px rgb(0, 0, 0, 0.4);
+        }
+        .layer-8{
+            position: absolute;
+            z-index: 8;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 170px;
+            height: 110px ;
+            background: rgb(24, 99, 58);
+            bottom: 0px;
+            border-radius: 60px 60px 0 0;
+        }
+        .layer-9{
+            position: absolute;
+            z-index: 9;
+            left: 0;
+            width: 110px;
+            height: 120px ;
+            background: white;
+            bottom: 0px;
+            border-radius: 80px 60px 50px 35px;
+        }
+        .cloud--left{
+            background: white;
+            width: 70px;
+            height: 60px;
+            position: absolute;
+            left: 80px;
+            top: 50px;
+            border-radius: 50%;
+        }
+        .cloud--right{
+            background: white;
+            width: 70px;
+            height: 60px;
+            position: absolute;
+            right: 70px;
+            top: 60px;
+            border-radius: 50%;
+        }
+        .layer-10{
+            position: absolute;
+            z-index: 10;
+            right: 0;
+            width: 110px;
+            height: 120px ;
+            background: white;
+            bottom: 0px;
+            border-radius: 50px 60px 25px 40px;
+        }
+        
+        @keyframes layer{
+            0%{
+                bottom: 0;
+            }
+            50%{
+                bottom: -50px;
+            }
+            100%{
+                bottom: 0;
+            }
+        }
+
+
+
+
+
+        .left-ear--outer{
+            background: rgb(253, 253, 253);
+            border-radius: 90%;
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+        .left-ear--inner{
+            background: pink;
+            border-radius: 90%;
+            width: 10px;
+            height: 20px;
+            position: absolute;
+            left: 15px;
+            top: 20px;
+        }
+        .right-ear--outer{
+            background: rgb(253, 253, 253);
+            border-radius: 90%;
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .right-ear--inner{
+            background: pink;
+            border-radius: 90%;
+            width: 10px;
+            height: 20px;
+            position: absolute;
+            right: 15px;
+            top: 20px;
+        }
+        .head{
+            background: white;
+            border-radius: 50%;
+            height: 80px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            top: 30px;
+            width: 100%;
+        }
+        .head__eye{
+            background: black;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 15px;
+
+
+            animation-name: blink;
+            animation-duration: 2000ms;
+            animation-iteration-count: infinite;
+        }
+        
+        @keyframes blink {
+            0%{
+                height: 10px;
+            }
+            5%{
+                transform: translate(0px, 2px);
+                height: 1px;
+            }
+            10%{
+                transform: translate(0px, 0px);
+                height: 8px;
+            }
+            
+        }
+
+
+        .head__eye--left{
+            left: 25px;
+
+        }
+        .head__eye--right{
+            right: 25px;
+        }
+        .pupils{
+            background: rgb(255, 255, 255);
+            border-radius: 50%;
+            width: 3px;
+            height: 3px;
+            position: absolute;
+            left: 6px;
+            top: 1px;
+        }
+
+
+
+        .grama{
+            background: seagreen	;
+            border-radius: 20px 20px 0 0;
+            width: 100%;
+            height: 30px;
+        }
+        .subgrama{
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(135deg, seagreen	 25%, transparent 25%) -50px 0,
+                linear-gradient(-135deg, seagreen 25%, transparent 25%) -50px 0,
+                linear-gradient(45deg, sandybrown 25%, transparent 25%),
+                linear-gradient(-45deg, sandybrown 25%, sienna 25%);
+            background-size: 20px 20px;
+        }
+
+        
+    </style>
+
+</head>
+<body>
+    <div class="phone">
+        <h2 class="title">ANIMATIONLAND</h2>
+        <div class="layer-1">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <input type="checkbox">
+                <div class="head__eye head__eye--left">
+                    <div class="pupils"></div>
+                </div>
+                <div class="head__eye head__eye--right">
+                    <div class="pupils"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layer-2">
+            <input type="checkbox">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left">
+                    <div class="pupils"></div>
+                </div>
+                <div class="head__eye head__eye--right">
+                    <div class="pupils"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layer-3">
+            <div class="grama"></div>
+            <div class="subgrama"></div>
+        </div>
+        <div class="layer-4">
+            <input type="checkbox">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left">
+                    <div class="pupils"></div>
+                </div>
+                <div class="head__eye head__eye--right">
+                    <div class="pupils"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layer-5">
+            <div class="grama"></div>
+            <div class="subgrama"></div>
+        </div>
+        <div class="layer-6">
+            <input type="checkbox">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye--left">
+                    <div class="pupils"></div>
+                </div>
+                <div class="head__eye head__eye--right">
+                    <div class="pupils"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layer-7">
+            <div class="grama"></div>
+            <div class="subgrama"></div>
+        </div>
+
+
+        <div class="layer-8">
+            
+        </div>
+        <div class="layer-9">
+            <div class="cloud--left"></div>
+        </div>
+        <div class="layer-10">
+            <div class="cloud--right"></div>
+        </div>
+
+        <h3 class="total-count">Score: </h3>
+
+    </div>
+
+    
+</body>
+</html>
